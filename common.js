@@ -31,7 +31,7 @@ let mainTl = gsap.timeline({
         start:"top bottom",
         end:"bottom bottom",
         scrub: 1,
-        markers: true,
+        // markers: true,
 },
 }
 
@@ -59,7 +59,7 @@ for(let i = 0; i < aboutLeftImgList.length; i++){
     }, '<');
 
     tl.to(aboutRightList[i], {
-        y: -resultHeight+22,
+        y: -resultHeight-60,
     })
 }
 
