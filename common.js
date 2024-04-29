@@ -1,18 +1,16 @@
 
 gsap.registerPlugin(ScrollTrigger);
 
-let containerHeight = document.querySelector('.gallery__about-left img').offsetHeight,
+const containerHeight = document.querySelector('.gallery__about-left img').offsetHeight,
     containerRightHeight = document.querySelector('.gallery__about-right').offsetHeight,
-    resultHeight = containerRightHeight - containerHeight - 23,
+    resultHeight = containerRightHeight - containerHeight,
     aboutLeftImgList = [...document.querySelectorAll('.about-left__img')],
     aboutRightList = [...document.querySelectorAll('.gallery__about-right')],
     aboutList = [...document.querySelectorAll('.gallery__about')],
     aboutLastLeft = document.querySelector('.gallery__about-left-last');
 
-
-console.log(containerHeight);
-console.log(containerRightHeight);
-console.log(resultHeight);
+const lastAboutRightItem = aboutRightList[aboutRightList.length-1];
+console.log(lastAboutRightItem);
 
     let tl = gsap.timeline({
         scrollTrigger: {
@@ -61,7 +59,7 @@ for(let i = 0; i < aboutLeftImgList.length; i++){
     }, '<');
 
     tl.to(aboutRightList[i], {
-        y: -resultHeight,
+        y: -resultHeight+22,
     })
 }
 
@@ -69,9 +67,11 @@ tl.to(aboutLastLeft,{
     // duration: 2,
     onComplete: ()=>{
         aboutLastLeft.classList.add('active')
+        // lastAboutRightItem.classList.add('active')
     },
     onReverseComplete: ()=>{
         aboutLastLeft.classList.remove('active')
+        // lastAboutRightItem.classList.remove('active')
     }
 
     
@@ -279,25 +279,6 @@ tl.to(aboutLastLeft,{
 
 
 
-let wpTL = gsap.timeline({
-    scrollTrigger: {
-        trigger: '.section projects-main projects-first',
-        start:"top bottom",
-        end:"bottom bottom",
-        scrub: 1,
-},
-})
-
-const wpIcon = document.querySelector('.event_wp.fixed-whatsapp');
-
-wpTL.to('.event_wp.fixed-whatsapp', {
-    opacity: 0,
-    visibility: 0,
-    onComplete: ()=>{
-        wpIcon.style.opacity = "1",
-        wpIcon.style.visibility = "1"
-    }
-})
 
 
 
